@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 
 // position in which we render components 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-// where we render components
 root.render(
   <React.StrictMode>
     <App />
