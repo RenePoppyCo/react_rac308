@@ -5,6 +5,11 @@ import React from 'react';
 function App() {
   return (
     <div className="App">
+      <Header />
+      <LeftColumn />
+      <RightColumn />
+      <Footer />   
+      
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,12 +23,7 @@ function App() {
         >
           Learn React
         </a>
-      </header> */}
-      
-      <Header />
-      <LeftColumn />
-      <RightColumn />
-      <Footer />      
+      </header> */}   
     </div>    
   );
 }
