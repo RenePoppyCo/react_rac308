@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT Assignment</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        .App {
+        text-align: center;
+        display: grid;
+        grid-template-areas: 
+            "header header"
+            "left right"
+            "footer footer";
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: auto 1fr auto; 
+        gap: 10px; 
+        margin: 10px; 
+        }
+
+        .Header {
+        grid-area: header;
+        height: 100px;
+        overflow: hidden;
+        }
+
+        .LeftColumn {
+        grid-area: left;
+        width: 80%;
+        }
+
+        .RightColumn {
+        grid-area: right; 
+        width: 80%;
+        }
+
+        .Footer {
+        grid-area: footer;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        }
+
+        .Header, .LeftColumn, .RightColumn, .Footer {
+        padding: 50px;
+        border: 1px solid #0d0b0b;
+        }
+
+        .cat {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+        } 
+
+        .cat-party{
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+        }
+    </style>
+
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // component for Header
+        function Header(){
+        return (
+            <div className='Header'>
+            <header className='Header-header'></header>
+            <img src={`https://i.redd.it/ux74bsifrpda1.jpg`} className="cat" alt="melvin" />
+            <p>
+                melvin
+            </p>
+            </div>
+        );
+        }
+
+        // component for LeftColumn which will displating time
+        class LeftColumn extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {currentTime: new Date().toLocaleTimeString()}
+        }
+
+        componentDidMount(){
+            this.timerID = setInterval(() => this.tick(), 1000); // set interval once the componenent is rendered :P
+        }
+
+        tick = () => {
+            this.setState({
+            currentTime: new Date().toLocaleTimeString(),
+            });
+        }
+
+        render(){
+            return (<div className='LeftColumn'>Current Time: {this.state.currentTime}</div>);
+        }
+        }
+
+        // component for RightColumn which will show the amt of clicks made on the button
+        class RightColumn extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {clicks: 0};
+        }
+
+        clicked = () => {
+            this.setState((prevState) => ({
+            clicks: prevState.clicks + 1,
+            }));
+        };
+
+        render(){
+            return(
+            <div className='RightColumn'>
+                <button onClick={this.clicked}>
+                Click Here!!!
+                </button>
+
+                <p>Here's how much clicks you've made: {this.state.clicks} </p>
+            </div>
+            );
+        }
+        }
+
+        // component for Footer
+        function Footer(){
+        return (
+            <div className='Footer'>
+            <img src={`https://i.pinimg.com/736x/ae/f3/13/aef3134e3ead9064a4f07cffd4689659.jpg`} className="cat-party" alt="cat party" />
+            <p>
+                happy b-day
+            </p>
+            </div>
+        );
+        }  
+
+        function App() {
+            return (
+                <div className="App">
+                <Header />
+                <LeftColumn />
+                <RightColumn />
+                <Footer />   
+                </div>    
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+  </body>
+</html>
