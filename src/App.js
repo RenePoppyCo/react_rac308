@@ -33,8 +33,9 @@ function Header(){
   return (
     <div className='Header'>
       <header className='Header-header'></header>
+      <img src={`https://i.redd.it/ux74bsifrpda1.jpg`} className="cat" alt="melvin" />
       <p>
-        testingkljfksakdaldjasdjjsadjsalkdj
+        melvin
       </p>
     </div>
   );
@@ -58,7 +59,7 @@ class LeftColumn extends React.Component {
   }
 
   render(){
-    return (<div>Current Time: {this.state.currentTime}</div>);
+    return (<div className='LeftColumn'>Current Time: {this.state.currentTime}</div>);
   }
 }
 
@@ -77,7 +78,7 @@ class RightColumn extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className='RightColumn'>
         <button onClick={this.clicked}>
           Click Here!!!
         </button>
@@ -92,9 +93,9 @@ class RightColumn extends React.Component {
 function Footer(){
   return (
     <div className='Footer'>
-      <header className='Footer-header'></header>
+      <img src={`https://i.pinimg.com/736x/ae/f3/13/aef3134e3ead9064a4f07cffd4689659.jpg`} className="cat-party" alt="cat party" />
       <p>
-        testingkljfksakdaldjasdjjsadjsalkdj
+        happy b-day
       </p>
     </div>
   );
